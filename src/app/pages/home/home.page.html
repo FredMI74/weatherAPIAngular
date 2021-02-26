@@ -1,7 +1,7 @@
-<form [formGroup]="searchForm" (ngSubmit)="submitForm()" novalidate>
+<form [formGroup]="searchForm" (ngSubmit)="submitForm()">
     <mat-form-field class="form-container" appearance="fill">
         <mat-label>Cidade</mat-label>
-        <input matInput formControlName="city">
+        <input matInput formControlName="city" required="true">
     </mat-form-field>
-    <button mat-flat-button color="primary">Pesquisar</button>
+    <button mat-flat-button color="primary" [disabled]="searchForm.invalid">Pesquisar</button>
 </form>
