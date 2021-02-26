@@ -11,10 +11,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './state/home.effects';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [HomePage],
   imports: [ 
+    MatCardModule,
     MatProgressSpinnerModule,
     ComponentsModule,
     MatButtonModule,

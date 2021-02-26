@@ -28,7 +28,7 @@ const reducer = createReducer(
   on(formHomeActions.loadCurrentWeatherFailed, state => ({
     ...state,
     loading: false,
-    error: true
+    errors: true
   }))
 );
 

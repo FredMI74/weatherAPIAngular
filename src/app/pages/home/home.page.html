@@ -10,7 +10,7 @@
 <mat-spinner *ngIf="loading$ | async"></mat-spinner>
 
 <div *ngIf="!(loading$ | async) && !(error$ | async) && !!(cityWeather$ | async)">
-    {{ (cityWeather$ | async).city.name }}
+    <owa-current-weather [cityWeather]="cityWeather$ | async"></owa-current-weather>
 </div>
 
 
