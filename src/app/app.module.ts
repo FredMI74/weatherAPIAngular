@@ -10,11 +10,16 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
+import { HomeModule } from './pages/home/home.module';
+import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HomeModule,
+    BookmarksModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
