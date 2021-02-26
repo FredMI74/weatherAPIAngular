@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { CityWeather } from 'src/app/shared/models/weather.model';
 
 import * as formHomeActions from './state/home.actions';
 import * as formHomeSelectors from './state/home.selectors';
@@ -12,23 +14,29 @@ import * as formHomeSelectors from './state/home.selectors';
 })
 export class HomePage implements OnInit {
   
+  cityWeather$: Observable<CityWeather>;
+  loading$: Observable<boolean>;
+  error$: Observable<boolean>;
+
   searchForm: FormGroup;
-  cidade : String;
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.searchForm = new FormGroup({
-      cidade: new FormControl('')
-    });
 
-    this.store.pipe(select(formHomeSelectors.selectHomeText))
-    .subscribe(text => this.cidade = text)
+   this.searchForm = new FormGroup({
+    cityname: new FormControl('')
+    });
+   
+    this.cityWeather$ = this.store.pipe(select(formHomeSelectors.selectCurrentWeather));
+    this.loading$ = this.store.pipe(select(formHomeSelectors.selectCurrentWeatherLoading));
+    this.error$ = this.store.pipe(select(formHomeSelectors.selectCurrentWeatherError));
+
   }
 
   submitForm() {
-    //this.store.dispatch(formHomeActions.changeText({ text: this.searchForm.controls.city.value }));
-    console.log(this.searchForm.value)
+    const query = this.searchForm.controls.cityname.value;
+    this.store.dispatch(formHomeActions.loadCurrentWeather({ query }));
   }
 
 

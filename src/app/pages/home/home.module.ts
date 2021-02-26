@@ -7,17 +7,24 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { homeReducer } from './state/home.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './state/home.effects';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [HomePage],
   imports: [ 
+    MatProgressSpinnerModule,
+    ComponentsModule,
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule, 
     ReactiveFormsModule,
     CommonModule,
-    StoreModule.forFeature('home', homeReducer)
+    StoreModule.forFeature('home', homeReducer),
+    EffectsModule.forFeature([HomeEffects])
   ]
 })
 export class HomeModule { }

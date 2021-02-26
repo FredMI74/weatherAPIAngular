@@ -20,7 +20,7 @@ const reducer = createReducer(
     loading: true,
     error: false,
   })),
-  on(formHomeActions.loadCurrentWeatherSucess, (state, { entity }) => ({
+  on(formHomeActions.loadCurrentWeatherSuccess, (state, { entity }) => ({
     ...state,
     entity,
     loading: false,
@@ -28,7 +28,7 @@ const reducer = createReducer(
   on(formHomeActions.loadCurrentWeatherFailed, state => ({
     ...state,
     loading: false,
-    erros: true
+    error: true
   }))
 );
 

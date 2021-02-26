@@ -1,8 +1,19 @@
-<h2>{{ cidade }}</h2>
 <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
     <mat-form-field class="form-container" appearance="fill">
         <mat-label>Cidade</mat-label>
-        <input matInput formControlName="city" required="true">
+        <input matInput formControlName="cityname" required="true">
     </mat-form-field>
     <button mat-flat-button color="primary" [disabled]="searchForm.invalid">Pesquisar</button>
 </form>
+
+
+<mat-spinner *ngIf="loading$ | async"></mat-spinner>
+
+<div *ngIf="!(loading$ | async) && !(error$ | async) && !!(cityWeather$ | async)">
+    {{ (cityWeather$ | async).city.name }}
+</div>
+
+
+<div *ngIf="!(loading$ | async) && (error$ | async)">
+    <a>Tente novamente</a>
+</div>
