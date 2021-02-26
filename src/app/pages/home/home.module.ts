@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { homeReducer } from './state/home.reducer';
 
 @NgModule({
   declarations: [HomePage],
@@ -14,7 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     FormsModule, 
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    StoreModule.forFeature('home', homeReducer)
   ]
 })
 export class HomeModule { }

@@ -12,12 +12,18 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { HomeModule } from './pages/home/home.module';
 import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     HomeModule,
     BookmarksModule,
     MatButtonModule,
@@ -26,7 +32,10 @@ import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
     MatToolbarModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
