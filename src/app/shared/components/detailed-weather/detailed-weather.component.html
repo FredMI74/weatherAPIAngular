@@ -1,0 +1,22 @@
+<div class="weather-details">
+
+    <div>
+
+        <span></span>
+    </div>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile><img [src]="weatherIcon"></mat-grid-tile>
+        <mat-grid-tile>
+            <h2>{{ weather.description }}
+            </h2>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip>{{ weather.temp }} {{ unitSymbol }}</mat-chip>
+        <mat-chip>Sensação térmica: {{ weather.feelsLike }} {{ unitSymbol }}</mat-chip>
+        <mat-chip>Humidade: {{ weather.humidity }}%</mat-chip>
+        <mat-chip>Velocidade do vento: {{ weather.wind.speed }} m/s</mat-chip>
+    </mat-chip-list>
+</div>

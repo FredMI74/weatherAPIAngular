@@ -1,13 +1,25 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { CityWeather } from '../../models/weather.model';
+import { Units } from 'src/app/shared/models/units.enum';
 
 @Component({
   selector: 'owa-current-weather',
   templateUrl: './current-weather.component.html',
-  styleUrls: ['./current-weather.component.css']
+  styleUrls: ['./current-weather.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CurrentWeatherComponent {
 
   @Input() cityWeather: CityWeather;
+  @Input() isFavorite: boolean;
+  @Input() unit: Units;
+  @Output() toggleBookmark = new EventEmitter();
 
+  get cityName(): string {
+    return `${this.cityWeather.city.name}, ${this.cityWeather.city.country}`; 
+  }
+
+  onToggleBookmark() {
+    this.toggleBookmark.emit();
+  }
 }

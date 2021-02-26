@@ -1,13 +1,11 @@
 <mat-card class="weather-card">
     <mat-card-header>
         <div mat-card-avatar></div>
-        <mat-card-title>Title</mat-card-title>
-        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        <mat-card-title>{{ cityName }}
+        </mat-card-title>
     </mat-card-header>
     <div mat-card-image></div>
     <mat-card-content>
-        <p>
-            Content
-        </p>
+        <owa-detailed-weather [weather]="cityWeather.weather" [unit]="unit"></owa-detailed-weather>
     </mat-card-content>
 </mat-card>
